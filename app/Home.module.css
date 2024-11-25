@@ -1,0 +1,56 @@
+/* Home.module.css */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .title {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .button:hover:not(:disabled) {
+    background-color: #357ABD;
+  }
+  
+  .text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 15px;
+  }
+  
+  .highlight {
+    font-weight: bold;
+  }
+  

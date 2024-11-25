@@ -1,0 +1,5 @@
+idea escritorio web:
+usando el porfolio como base el usuario podra eliminar iconos y la autobiografia
+podra añadir nuevos iconos que llevaran a una web o a un intent de otra app
+estos iconos se podran ordenar de distintas formas como si fuera un escritorio
+todas estas configuraciones se guardarán en local.
