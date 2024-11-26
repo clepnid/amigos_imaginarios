@@ -9,15 +9,15 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
-    const localName = localStorage.getItem('name2');
+    const localName = localStorage.getItem('name3');
     if (localName) setStoredName(localName);
   }, []);
 
   const handleSaveName = () => {
     if (!name.trim()) return;
 
-    localStorage.setItem('name2', name);
-    setStoredName(name);
+    localStorage.setItem('name3', name);
+    setStoredName(name.toLowerCase());
 
     fetch('/api/saveName', {
       method: 'POST',
@@ -72,7 +72,7 @@ export default function Home() {
       <div>
         <input
           type="text"
-          placeholder="Introduce tu nombre para enseñarselo a tu amigo imaginario"
+          placeholder="Introduce tu nombre que aparezca en la lista:"
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={Boolean(storedName)}
@@ -91,9 +91,6 @@ export default function Home() {
           Nombre guardado: <span className={styles.highlight}>{storedName}</span>
         </p>
       )}
-      <p className={styles.text}>
-        (cuando los 11 amigos pongan sus nombres)
-      </p>
       <button onClick={handleFetchNames} className={styles.button}>
         Ver a quien regalar
       </button>
@@ -106,7 +103,7 @@ export default function Home() {
       {currentIndex !== -1 && namesList.length !== 0 && (
         <>
           <p className={styles.text}>
-            Te toca regalar a regalar: <span className={styles.highlight}>{namesList[currentIndex]}</span>
+            Te toca regalar a: <span className={styles.highlight}>{namesList[currentIndex]}</span>
           </p>
         </>
       )}
