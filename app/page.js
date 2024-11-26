@@ -11,7 +11,23 @@ export default function Home() {
   useEffect(() => {
     const localName = localStorage.getItem('name3');
     if (localName) setStoredName(localName);
+    fetch('/api/readNames')
+      .then((res) => res.json())
+      .then((data) => {
+        setNamesList(data.names);
+        if (data.names.length === 11) {
+          for (let index = 0; index < data.names.length; index++) {
+            if (data.names[index] === storedName) {
+              setCurrentIndex((index + 1) % data.names.length);
+              break;
+            }
+          }
+        }
+      })
+      .catch((err) => console.error('Error loading names:', err));
   }, []);
+
+
 
   const handleSaveName = () => {
     if (!name.trim()) return;
@@ -44,24 +60,21 @@ export default function Home() {
         .then((res) => res.json())
         .then((data) => {
           setNamesList(data.names);
-          if (data.names.length === 11) {
-            for (let index = 0; index < data.names.length; index++) {
-              if (data.names[index] === storedName) {
-                setCurrentIndex((index + 1) % data.names.length);
-                break;
-              }
+          for (let index = 0; index < data.names.length; index++) {
+            if (data.names[index] === storedName) {
+              setCurrentIndex((index + 1) % data.names.length);
+              break;
             }
           }
         })
         .catch((err) => console.error('Error loading names:', err));
     } else {
-      if (namesList.length === 11) {
-        for (let index = 0; index < namesList.length; index++) {
-          if (namesList[index] === storedName) {
-            setCurrentIndex((index + 1) % namesList.length);
-            break;
-          }
+      for (let index = 0; index < namesList.length; index++) {
+        if (namesList[index] === storedName) {
+          setCurrentIndex((index + 1) % namesList.length);
+          break;
         }
+
       }
     }
   };
