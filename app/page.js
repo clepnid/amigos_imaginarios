@@ -9,14 +9,14 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
-    const localName = localStorage.getItem('name');
+    const localName = localStorage.getItem('name2');
     if (localName) setStoredName(localName);
   }, []);
 
   const handleSaveName = () => {
     if (!name.trim()) return;
 
-    localStorage.setItem('name', name);
+    localStorage.setItem('name2', name);
     setStoredName(name);
 
     fetch('/api/saveName', {
