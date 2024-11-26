@@ -101,7 +101,7 @@ export default function Home() {
         <p className={styles.text}>
           Amigos que se han introducido:
         </p>
-        <p className={styles.text}>{listaDesordenada.join(", ")}</p>
+        <p className={styles.text}>{shuffleArray(namesList).join(", ")}</p>
       </>
       {currentIndex !== -1 && namesList.length !== 0 && (
         <>
