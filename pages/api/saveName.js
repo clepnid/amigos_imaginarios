@@ -4,7 +4,7 @@ import path from 'path';
 export default function handler(req, res) {
   if (req.method === 'POST') {
     const { name } = req.body;
-    const filePath = path.join(process.cwd(), 'public', 'nombres.txt');
+    const filePath = path.join('.', 'public', 'nombres.txt');
 
     // Añade el nombre al archivo
     fs.appendFile(filePath, `${name}\n`, (err) => {
