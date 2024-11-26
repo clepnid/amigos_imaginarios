@@ -26,6 +26,18 @@ export default function Home() {
     }).catch((err) => console.error('Error saving name:', err));
   };
 
+  const shuffleArray = (array) => {
+    // Copiamos el array original para evitar mutarlo
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Índice aleatorio entre 0 e i
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Intercambia elementos
+    }
+
+    return shuffled;
+  };
+
   const handleFetchNames = () => {
     if (namesList.length === 0) {
       fetch('/api/readNames')
@@ -85,10 +97,18 @@ export default function Home() {
       <button onClick={handleFetchNames} className={styles.button}>
         Ver a quien regalar
       </button>
-      {currentIndex !== -1 && namesList.length !== 0 && (
+      <>
         <p className={styles.text}>
-          A quien regalar: <span className={styles.highlight}>{namesList[currentIndex]}</span>
+          Amigos que se han introducido:
         </p>
+        <p className={styles.text}>{listaDesordenada.join(", ")}</p>
+      </>
+      {currentIndex !== -1 && namesList.length !== 0 && (
+        <>
+          <p className={styles.text}>
+            Te toca regalar a regalar: <span className={styles.highlight}>{namesList[currentIndex]}</span>
+          </p>
+        </>
       )}
     </div>
   );
